@@ -54,12 +54,21 @@ export default {
         description: '',
         location: '',
         organizer: { id: '', name: '' }
-      }
+      },
+      files: []
     }
   },
   methods: {
     saveEvent() {
       EventService.saveEvent(this.event)
+       Promise.all(
+        this.files.map((file) => {
+          return EventService.uploadFile(file)
+        })
+      ).then((response) => {
+        console.log(response)
+        console.log('finish upload file')
+      })
         .then((response) => {
           console.log(response)
           this.$router.push({
@@ -77,7 +86,7 @@ export default {
         })
     },
     handleImages(files) {
-      console.log(files)
+     this.files=files
     }
   }
 }
