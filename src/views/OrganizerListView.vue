@@ -1,29 +1,30 @@
 <template>
   <h1>Organizer</h1>
+  <div class="events">
+    <OrganizerCard
+      v-for="organizer in organizers"
+      :key="organizer.id"
+      :organizer="organizer"
+    ></OrganizerCard>
 
-  <OrganizerCard
-    v-for="organizer in organizers"
-    :key="organizer.id"
-    :organizer="organizer"
-  ></OrganizerCard>
-
-  <div class="pagination">
-    <router-link
-      id="page-prev"
-      :to="{ name: 'OrganizerView', query: { page: page - 1 } }"
-      rel="prev"
-      v-if="page != 1"
-    >
-      Prev Page
-    </router-link>
-    <router-link
-      id="page-next"
-      :to="{ name: 'OrganizerView', query: { page: page + 1 } }"
-      rel="next"
-      v-if="hasNextPage"
-    >
-      Next Page
-    </router-link>
+    <div class="pagination">
+      <router-link
+        id="page-prev"
+        :to="{ name: 'OrganizerView', query: { page: page - 1 } }"
+        rel="prev"
+        v-if="page != 1"
+      >
+        Prev Page
+      </router-link>
+      <router-link
+        id="page-next"
+        :to="{ name: 'OrganizerView', query: { page: page + 1 } }"
+        rel="next"
+        v-if="hasNextPage"
+      >
+        Next Page
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -31,7 +32,6 @@
 // @ is an alias to /src
 import OrganizerCard from '@/components/OrganizerCard.vue'
 import OrganizerService from '@/services/OrganizerService.js'
-
 export default {
   name: 'OrganizertListView',
   props: {
@@ -95,7 +95,6 @@ export default {
     //     })
     // }
   },
-
   computed: {
     hasNextPage() {
       let totalPages = Math.ceil(this.totalOrganizers / 3)
@@ -114,21 +113,17 @@ export default {
   display: flex;
   width: 290px;
 }
-
 .pagination a {
   flex: 1;
   text-decoration: none;
   color: #2c3e50;
 }
-
 #page-prev {
   text-align: left;
 }
-
 #page-next {
   text-align: right;
 }
-
 .search-box {
   width: 300px;
 }

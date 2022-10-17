@@ -24,9 +24,8 @@ export default {
   padding: 20px;
   width: 250px;
   cursor: pointer;
-  border: 1px solid #d5e44a;
+  border: 1px solid #39495c;
   margin-bottom: 18px;
-  margin: 20px 0 0 620px;
 }
 
 .organizer-card:hover {

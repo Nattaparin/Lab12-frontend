@@ -29,7 +29,7 @@
         label="Select an Organizer"
       />
       <h3>The image of the Event</h3>
-      <UploadImages @change="handleImages" />
+      <UploadImages @changed="handleImages" />
 
       <button type="submit">Submit</button>
     </form>
@@ -53,7 +53,8 @@ export default {
         title: '',
         description: '',
         location: '',
-        organizer: { id: '', name: '' }
+        organizer: { id: '', name: '' },
+        imageUrls: []
       },
       files: []
     }
